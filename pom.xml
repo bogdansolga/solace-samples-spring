@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.solace.samples.spring</groupId>
+    <artifactId>spring-samples</artifactId>
+
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Spring Solace samples</name>
+
+    <modules>
+        <module>cloud-stream-dynamic-destination-processor</module>
+        <module>cloud-stream-function-composition</module>
+        <module>cloud-stream-processor</module>
+        <module>cloud-stream-sink</module>
+        <module>cloud-stream-source</module>
+
+        <module>spring-boot-autoconfig-receiver</module>
+        <module>spring-boot-autoconfig-sender</module>
+
+        <module>spring-samples-datamodel</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <solace-spring-cloud-bom.version>2.1.0</solace-spring-cloud-bom.version>
+        <spring-cloud-stream.version>3.1.2</spring-cloud-stream.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.solace.samples.spring</groupId>
+                <artifactId>spring-samples-datamodel</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.solace.spring.cloud</groupId>
+                <artifactId>solace-spring-cloud-bom</artifactId>
+                <version>${solace-spring-cloud-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-stream-test-support</artifactId>
+                <version>${spring-cloud-stream.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.vaadin.external.google</groupId>
+                        <artifactId>android-json</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
